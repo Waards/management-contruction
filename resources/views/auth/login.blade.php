@@ -1,4 +1,9 @@
 <x-guest-layout>
+    <div class="text-center mb-6">
+        <h1 class="text-2xl font-bold text-gray-800">BuildTrack Pro</h1>
+        <p class="text-sm text-gray-500 mt-1">Construction Management System</p>
+    </div>
+
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -42,6 +47,13 @@
             <x-primary-button class="ms-3">
                 {{ __('Log in') }}
             </x-primary-button>
+        </div>
+
+        <div class="mt-6 text-center text-sm">
+            <span class="text-gray-600">Don't have an account?</span>
+            <a class="underline text-indigo-600 hover:text-indigo-900" href="{{ route('register') }}">
+                Register
+            </a>
         </div>
     </form>
 </x-guest-layout>
