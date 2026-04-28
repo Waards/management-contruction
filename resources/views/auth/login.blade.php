@@ -13,30 +13,7 @@
     </div>
 
     <div class="container" id="container">
-        <div class="form-container sign-up">
-            <form method="POST" action="{{ route('register') }}">
-                @csrf
-                <h1>Create Account</h1>
-                <div class="social-icons">
-                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
-                </div>
-                <span>or use your email for registration</span>
-                <input type="text" name="name" placeholder="Name" value="{{ old('name') }}" required>
-                <input type="email" name="email" placeholder="Email" value="{{ old('email') }}" required>
-                <select name="role" required>
-                    <option value="pm">Project Manager (PM)</option>
-                    <option value="hr">HR</option>
-                    <option value="engineer">Engineer</option>
-                    <option value="admin">Admin</option>
-                </select>
-                <input type="password" name="password" placeholder="Password" required>
-                <input type="password" name="password_confirmation" placeholder="Confirm Password" required>
-                <button type="submit">Sign Up</button>
-            </form>
-        </div>
+        <!-- Sign In Form -->
         <div class="form-container sign-in">
             <form method="POST" action="{{ route('login') }}">
                 @csrf
@@ -56,6 +33,35 @@
                 <button type="submit">Sign In</button>
             </form>
         </div>
+
+        <!-- Sign Up Form -->
+        <div class="form-container sign-up">
+            <form method="POST" action="{{ route('register') }}">
+                @csrf
+                <h1>Create Account</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your email for registration</span>
+                <input type="text" name="name" placeholder="Name" value="{{ old('name') }}" required>
+                <input type="email" name="email" placeholder="Email" value="{{ old('email') }}" required>
+                <select name="role" required>
+                    <option value="">Select Role</option>
+                    <option value="pm" {{ old('role') == 'pm' ? 'selected' : '' }}>Project Manager (PM)</option>
+                    <option value="hr" {{ old('role') == 'hr' ? 'selected' : '' }}>HR</option>
+                    <option value="engineer" {{ old('role') == 'engineer' ? 'selected' : '' }}>Engineer</option>
+                    <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
+                </select>
+                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" name="password_confirmation" placeholder="Confirm Password" required>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+
+        <!-- Toggle -->
         <div class="toggle-container">
             <div class="toggle">
                 <div class="toggle-panel toggle-left">
@@ -78,11 +84,11 @@
         const loginBtn = document.getElementById('login');
 
         registerBtn?.addEventListener('click', () => {
-            container.classList.add("active");
+            container.classList.add('active');
         });
 
         loginBtn?.addEventListener('click', () => {
-            container.classList.remove("active");
+            container.classList.remove('active');
         });
     </script>
 </body>
