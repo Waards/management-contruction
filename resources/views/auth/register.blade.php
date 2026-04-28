@@ -1,60 +1,89 @@
-<form method="POST" action="{{ route('register') }}">
-    @csrf
-
-    <div style="display: flex; flex-direction: column; gap: 1.25rem;">
-        <div>
-            <label style="display: block; font-size: 0.875rem; font-weight: 500; color: #374151; margin-bottom: 0.25rem;">Full Name</label>
-            <input type="text" name="name" value="{{ old('name') }}" required autofocus autocomplete="name"
-                   style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #d1d5db; border-radius: 0.75rem; background: #f9fafb; font-size: 1rem;">
-            @error('name')
-                <p style="margin-top: 0.25rem; font-size: 0.875rem; color: #dc2626;">{{ $message }}</p>
-            @enderror
-        </div>
-
-        <div>
-            <label style="display: block; font-size: 0.875rem; font-weight: 500; color: #374151; margin-bottom: 0.25rem;">Email Address</label>
-            <input type="email" name="email" value="{{ old('email') }}" required autocomplete="username"
-                   style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #d1d5db; border-radius: 0.75rem; background: #f9fafb; font-size: 1rem;">
-            @error('email')
-                <p style="margin-top: 0.25rem; font-size: 0.875rem; color: #dc2626;">{{ $message }}</p>
-            @enderror
-        </div>
-
-        <div>
-            <label style="display: block; font-size: 0.875rem; font-weight: 500; color: #374151; margin-bottom: 0.25rem;">Select Role</label>
-            <select name="role" required
-                    style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #d1d5db; border-radius: 0.75rem; background: #f9fafb; font-size: 1rem;">
-                <option value="pm">Project Manager (PM)</option>
-                <option value="hr">HR</option>
-                <option value="engineer">Engineer</option>
-                <option value="admin">Admin</option>
-            </select>
-            <p style="margin-top: 0.25rem; font-size: 0.75rem; color: #6b7280;">Choose the role that best describes your position</p>
-            @error('role')
-                <p style="margin-top: 0.25rem; font-size: 0.875rem; color: #dc2626;">{{ $message }}</p>
-            @enderror
-        </div>
-
-        <div>
-            <label style="display: block; font-size: 0.875rem; font-weight: 500; color: #374151; margin-bottom: 0.25rem;">Password</label>
-            <input type="password" name="password" required autocomplete="new-password"
-                   style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #d1d5db; border-radius: 0.75rem; background: #f9fafb; font-size: 1rem;">
-            @error('password')
-                <p style="margin-top: 0.25rem; font-size: 0.875rem; color: #dc2626;">{{ $message }}</p>
-            @enderror
-        </div>
-
-        <div>
-            <label style="display: block; font-size: 0.875rem; font-weight: 500; color: #374151; margin-bottom: 0.25rem;">Confirm Password</label>
-            <input type="password" name="password_confirmation" required autocomplete="new-password"
-                   style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #d1d5db; border-radius: 0.75rem; background: #f9fafb; font-size: 1rem;">
-            @error('password_confirmation')
-                <p style="margin-top: 0.25rem; font-size: 0.875rem; color: #dc2626;">{{ $message }}</p>
-            @enderror
-        </div>
-
-        <button type="submit" style="width: 100%; padding: 0.75rem 1rem; background: #4f46e5; color: white; font-weight: 600; border-radius: 0.75rem; border: none; cursor: pointer; font-size: 1rem; transition: background 0.2s;">
-            Create Account
-        </button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('css/modern-login.css') }}">
+    <title>BuildTrack Pro - Register</title>
+</head>
+<body>
+    <div class="logo-container">
+        <h1>BuildTrack Pro</h1>
     </div>
-</form>
+
+    <div class="container" id="container">
+        <div class="form-container sign-up">
+            <form method="POST" action="{{ route('register') }}">
+                @csrf
+                <h1>Create Account</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your email for registration</span>
+                <input type="text" name="name" placeholder="Name" value="{{ old('name') }}" required>
+                <input type="email" name="email" placeholder="Email" value="{{ old('email') }}" required>
+                <select name="role" required>
+                    <option value="pm">Project Manager (PM)</option>
+                    <option value="hr">HR</option>
+                    <option value="engineer">Engineer</option>
+                    <option value="admin">Admin</option>
+                </select>
+                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" name="password_confirmation" placeholder="Confirm Password" required>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+        <div class="form-container sign-in">
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+                <h1>Sign In</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your email account</span>
+                <input type="email" name="email" placeholder="Email" value="{{ old('email') }}" required>
+                <input type="password" name="password" placeholder="Password" required>
+                @if (Route::has('password.request'))
+                <a href="{{ route('password.request') }}">Forgot Your Password?</a>
+                @endif
+                <button type="submit">Sign In</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Welcome Back!</h1>
+                    <p>Enter your personal details to use all of site features</p>
+                    <button class="hidden" id="login">Sign In</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Register with your personal details to use all of site features</p>
+                    <button class="hidden" id="register">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const container = document.getElementById('container');
+        const registerBtn = document.getElementById('register');
+        const loginBtn = document.getElementById('login');
+
+        registerBtn?.addEventListener('click', () => {
+            container.classList.add("active");
+        });
+
+        loginBtn?.addEventListener('click', () => {
+            container.classList.remove("active");
+        });
+    </script>
+</body>
+</html>
